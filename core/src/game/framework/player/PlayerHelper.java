@@ -16,6 +16,8 @@ public class PlayerHelper {
 	private Vector2 clickedPoint;
 	private boolean isclicked;
 	
+	private boolean isDragging;
+	
 	private GamePlayStates lastPlayerState;
 	private GamePlayStates playerState;
 	public enum GamePlayStates {SELECTED, NOT_SELECTED, GO_TO_SOLDIERS};
@@ -27,7 +29,7 @@ public class PlayerHelper {
 
 		clickedPoint = new Vector2();
 		
-		playerState = GamePlayStates.NOT_SELECTED;
+		lastPlayerState = GamePlayStates.NOT_SELECTED;
 		playerState = GamePlayStates.NOT_SELECTED;
 		
 		selectedObjects = new Array<Ant>();
@@ -46,6 +48,13 @@ public class PlayerHelper {
 							   InteractionHelper.interactionLength, InteractionHelper.interactionLength);
 			shapeRenderer.end();
 			isclicked = false;
+		} else if (isDragging) {
+			shapeRenderer.begin(ShapeType.Line);
+			shapeRenderer.setColor(Color.RED);
+			shapeRenderer.rect(clickedPoint.x - InteractionHelper.interactionLength / 2, 
+							   clickedPoint.y - InteractionHelper.interactionLength / 2,
+							   InteractionHelper.interactionLength, InteractionHelper.interactionLength);
+			shapeRenderer.end();
 		}
 		
 		shapeRenderer.begin(ShapeType.Line);

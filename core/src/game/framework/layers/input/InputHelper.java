@@ -35,6 +35,7 @@ public class InputHelper implements InputProcessor, GestureListener {
 	@Override
 	public boolean fling(float velocityX, float velocityY, int button) {
 		// TODO Auto-generated method stub
+		// MODIFICADO !!!!!!!!!!!!!
 		return false;
 	}
 
